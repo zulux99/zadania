@@ -37,19 +37,43 @@ import math
 # for i in list(ciagZnakow):
 #     print(i, ord(i))
 # ZADANIE 8
-slownik = { "myszka" : 140, "klawiatura" : 290, "monitor" : 740, "procesor" : 830, "obudowa" : 220}
-staraSrednia = math.fsum(slownik.values()) / len(slownik)
-print("Średnia cena to:", staraSrednia)
-nazwaProduktu = input("Podaj nazwę nowego produktu:")
-cenaProduktu = int(input("Podaj cenę nowego produktu: "))
-slownik[nazwaProduktu] = cenaProduktu
-for i in sorted(slownik):
-    print(i, "=", slownik[i])
-nowaSrednia = math.fsum(slownik.values()) / len(slownik)
-print("Nowa średnia cena to:", nowaSrednia)
-if (nowaSrednia > staraSrednia):
-    print("Średnia cena wzrosła")
-elif (nowaSrednia < staraSrednia):
-    print("Średnia cena zmalała")
-else:
-    pass
+# slownik = { "myszka" : 140, "klawiatura" : 290, "monitor" : 740, "procesor" : 830, "obudowa" : 220}
+# staraSrednia = math.fsum(slownik.values()) / len(slownik)
+# print("Średnia cena to:", staraSrednia)
+# nazwaProduktu = input("Podaj nazwę nowego produktu:")
+# cenaProduktu = int(input("Podaj cenę nowego produktu: "))
+# slownik[nazwaProduktu] = cenaProduktu
+# for i in sorted(slownik):
+#     print(i, "=", slownik[i])
+# nowaSrednia = math.fsum(slownik.values()) / len(slownik)
+# print("Nowa średnia cena to:", nowaSrednia)
+# if (nowaSrednia > staraSrednia):
+#     print("Średnia cena wzrosła")
+# elif (nowaSrednia < staraSrednia):
+#     print("Średnia cena zmalała")
+# else:
+#     pass
+# ZADANIE 9
+# WAŻNE!!!! DO POPRAWNEGO DZIAŁANIA TEGO ZADANIA WYMAGANA JEST WERSJA PYTHON 3.10
+# Z POWODU ZASTOSOWANIA INSTRUKCJI SWITCH (MATCH)
+while True:
+    try:
+        x = int(input("Podaj ciąg cyfr: "))
+    except ValueError:
+        print("Podana wartość nie jest ciągiem znaków")
+        continue
+    else:
+        ciagCyfr = list(str(x))
+        break
+for i in ciagCyfr:
+    match i:
+        case "0": print("zero", end=' ')
+        case "1": print("jeden", end=' ')
+        case "2": print("dwa", end=' ')
+        case "3": print("trzy", end=' ')
+        case "4": print("cztery", end=' ')
+        case "5": print("pięć", end=' ')
+        case "6": print("sześć", end=' ')
+        case "7": print("siedem", end=' ')
+        case "8": print("osiem", end=' ')
+        case "9": print("dziewięć", end=' ')
