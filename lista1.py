@@ -1,5 +1,7 @@
 import math
 import random
+# ZADANIE 1
+# _ w trybie interaktywnym oznacza poprzedni wynik
 # ZADANIE 2
 print("Suma =", 4 + 6 - 3 + 9)
 print("Różnica =", (4 + 6 - 3 + 9) / 4)
@@ -55,8 +57,8 @@ elif (nowaSrednia < staraSrednia):
 else:
     pass
 # ZADANIE 9
-# WAŻNE!!!! DO POPRAWNEGO DZIAŁANIA TEGO ZADANIA WYMAGANA JEST WERSJA PYTHON 3.10
-# Z POWODU ZASTOSOWANIA INSTRUKCJI SWITCH (MATCH)
+# WAŻNE!!!! Do poprawnego działania tego zadania wymagana jest wersja Python 3.10
+# z powodu zastosowania instrukcji SWITCH (MATCH)
 while True:
     try:
         x = int(input("Podaj ciąg cyfr: "))
