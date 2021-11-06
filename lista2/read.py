@@ -1,4 +1,5 @@
 import sys
+from pathlib import Path
 try:
     sys.argv[1]
 except IndexError:
@@ -9,7 +10,7 @@ except IndexError:
     quit()
 try:
     lines = []
-    file = open(sys.argv[1])
+    file = open(Path(__file__).with_name(sys.argv[1]), encoding='utf-8-sig')
     lines = file.readlines()
 except FileNotFoundError:
     print("Nie znaleziono takiego pliku")
