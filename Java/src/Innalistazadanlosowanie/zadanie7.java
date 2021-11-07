@@ -1,26 +1,34 @@
 package Innalistazadanlosowanie;
 
-import java.util.concurrent.ThreadLocalRandom;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class zadanie7 {
 
     public static void main(String[] args) {
-        int[] losoweLiczby = new int[6];
-        int[] wylosowane = new int[6];
-        for (int i = 0; i < 6; i++)
-        {
-            losoweLiczby[i] = ThreadLocalRandom.current().nextInt(1, 50);
-            wylosowane[i] = losoweLiczby[i];
-            for (int j = 0; j < i; j++)
-            {
-                while (losoweLiczby[i] == wylosowane[j]) {
-                    losoweLiczby[i] = ThreadLocalRandom.current().nextInt(1, 50);
-                    wylosowane[i] = losoweLiczby[i];
-                    j = 0;
+        String[] tablica = new String[1000];
+        try {
+            File myObj = new File(System.getProperty("user.dir") + "\\src\\Innalistazadanlosowanie\\" + "NAPIS.txt");
+            Scanner myReader = new Scanner(myObj);
+            int i = 0;
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                tablica[i] = data;
+                for (int j = 0; j < i; j++)
+                {
+                    if (data.equals(tablica[j]))
+                    {
+                        System.out.println(data);
+                        break;
+                    }
                 }
+                i++;
             }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
         }
-        for (int i: losoweLiczby)
-            System.out.print(i + " ");
     }
 }
