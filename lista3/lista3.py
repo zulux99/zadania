@@ -92,100 +92,94 @@
 # zegar.mainloop()
 # # ZADANIE 5
 import tkinter
-dzialanie = 0
-def number0(event):
-    screen.config(text = "0")
-def number1(event):
-    screen.config(text = "1")
-def number2(event):
-    screen.config(text = "2")
-def number3(event):
-    screen.config(text = "3")
-def number4(event):
-    screen.config(text = "4")
-def number5(event):
-    screen.config(text = "5")
-def number6(event):
-    screen.config(text = "6")
-def number7(event):
-    screen.config(text = "7")
-def number8(event):
-    screen.config(text = "8")
-def number9(event):
-    screen.config(text = "9")
-def numberDivide(event):
-    screen.config(text = "/")
-def numberSqrt(event):
-    screen.config(text = "√")
-def numberMultiply(event):
-    screen.config(text = "*")
-def numberPercent(event):
-    screen.config(text = "%")
-def numberMinus(event):
-    screen.config(text = "-")
-def numberSum(event):
-    screen.config(text = "=")
-def numberPrzecinek(event):
-    screen.config(text = ",")
-def numberPlus(event):
-    screen.config(text = "+")
+def reset():
+    global dzialanie, znak, dzialanieWTle
+    dzialanie = "0"
+    znak = ""
+    dzialanieWTle = "0"
+def wyswietl(tekst):
+    screen.config(text = tekst)
+def click(wartosc):
+    global dzialanie
+    try:
+        if int(wartosc) == 0 and int(dzialanie) == 0:
+            pass
+        elif int(wartosc) in range(0, 10):
+            if int(dzialanie) == 0:
+                dzialanie = ""
+            dzialanie += wartosc
+        wyswietl(dzialanie)
+    except ValueError:
+        global znak, dzialanieWTle
+        if wartosc != "" and wartosc != "=":
+            if znak != "":
+                return
+            znak = wartosc
+            dzialanieWTle, dzialanie = dzialanie, dzialanieWTle
+        if znak == "√":
+            dzialanie = float(dzialanieWTle) ** 0.5
+            wyswietl(dzialanie)
+            reset()
+        if wartosc == "=":
+            if znak == "":
+                return
+            match znak:
+                case "/":
+                    dzialanie = int(dzialanieWTle) / int(dzialanie)
+                    wyswietl(dzialanie)
+                case "*":
+                    dzialanie = int(dzialanieWTle) * int(dzialanie)
+                    wyswietl(dzialanie)
+                case "%":
+                    dzialanie = int(dzialanieWTle) / int(dzialanie)
+                    wyswietl(dzialanie)
+                case "-":
+                    dzialanie = int(dzialanieWTle) - int(dzialanie)
+                    wyswietl(dzialanie)
+                case "+":
+                    dzialanie = int(dzialanieWTle) + int(dzialanie)
+                    wyswietl(dzialanie)
+            reset()
+reset()
 kalkulator = tkinter.Tk()
 kalkulator.geometry("215x235")
 screen = tkinter.Label(kalkulator, text=dzialanie)
 screen.config(background="white", font=("Arial", 15))
 screen.place(x = 10, y = 10, width = 195, height = 50)
-przycisk0 = tkinter.Button(kalkulator, text="0")
-przycisk0.bind("<Button-1>", number0)
+przycisk0 = tkinter.Button(kalkulator, text="0", command=lambda:click("0"))
 przycisk0.place(x = 10, y = 190, width = 75, height = 30)
-przycisk1 = tkinter.Button(kalkulator, text="1")
-przycisk1.bind("<Button-1>", number1)
+przycisk1 = tkinter.Button(kalkulator, text="1", command=lambda:click("1"))
 przycisk1.place(x = 10, y = 150, width = 35, height = 30)
-przycisk2 = tkinter.Button(kalkulator, text="2")
-przycisk2.bind("<Button-1>", number2)
+przycisk2 = tkinter.Button(kalkulator, text="2", command=lambda:click("2"))
 przycisk2.place(x = 50, y = 150, width = 35, height = 30)
-przycisk3 = tkinter.Button(kalkulator, text="3")
-przycisk3.bind("<Button-1>", number3)
+przycisk3 = tkinter.Button(kalkulator, text="3", command=lambda:click("3"))
 przycisk3.place(x = 90, y = 150, width = 35, height = 30)
-przycisk4 = tkinter.Button(kalkulator, text="4")
-przycisk4.bind("<Button-1>", number4)
+przycisk4 = tkinter.Button(kalkulator, text="4", command=lambda:click("4"))
 przycisk4.place(x = 10, y = 110, width = 35, height = 30)
-przycisk5 = tkinter.Button(kalkulator, text="5")
-przycisk5.bind("<Button-1>", number5)
+przycisk5 = tkinter.Button(kalkulator, text="5", command=lambda:click("5"))
 przycisk5.place(x = 50, y = 110, width = 35, height = 30)
-przycisk6 = tkinter.Button(kalkulator, text="6")
-przycisk6.bind("<Button-1>", number6)
+przycisk6 = tkinter.Button(kalkulator, text="6", command=lambda:click("6"))
 przycisk6.place(x = 90, y = 110, width = 35, height = 30)
-przycisk7 = tkinter.Button(kalkulator, text="7")
-przycisk7.bind("<Button-1>", number7)
+przycisk7 = tkinter.Button(kalkulator, text="7", command=lambda:click("7"))
 przycisk7.place(x = 10, y = 70, width = 35, height = 30)
-przycisk8 = tkinter.Button(kalkulator, text="8")
-przycisk8.bind("<Button-1>", number8)
+przycisk8 = tkinter.Button(kalkulator, text="8", command=lambda:click("8"))
 przycisk8.place(x = 50, y = 70, width = 35, height = 30)
-przycisk9 = tkinter.Button(kalkulator, text="9")
-przycisk9.bind("<Button-1>", number9)
+przycisk9 = tkinter.Button(kalkulator, text="9", command=lambda:click("9"))
 przycisk9.place(x = 90, y = 70, width = 35, height = 30)
-przyciskDzielenia = tkinter.Button(kalkulator, text="/")
-przyciskDzielenia.bind("<Button-1>", numberDivide)
+przyciskDzielenia = tkinter.Button(kalkulator, text="/", command=lambda:click("/"))
 przyciskDzielenia.place(x = 130, y = 70, width = 35, height = 30)
-przyciskPierwiastka = tkinter.Button(kalkulator, text="√")
-przyciskPierwiastka.bind("<Button-1>", numberSqrt)
+przyciskPierwiastka = tkinter.Button(kalkulator, text="√", command=lambda:click("√"))
 przyciskPierwiastka.place(x = 170, y = 70, width = 35, height = 30)
-przyciskMnozenia = tkinter.Button(kalkulator, text="*")
-przyciskMnozenia.bind("<Button-1>", numberMultiply)
+przyciskMnozenia = tkinter.Button(kalkulator, text="*", command=lambda:click("*"))
 przyciskMnozenia.place(x = 130, y = 110, width = 35, height = 30)
-przyciskProcentow = tkinter.Button(kalkulator, text="%")
-przyciskProcentow.bind("<Button-1>", numberPercent)
+przyciskProcentow = tkinter.Button(kalkulator, text="%", command=lambda:click("%"))
 przyciskProcentow.place(x = 170, y = 110, width = 35, height = 30)
-przyciskOdejmowania = tkinter.Button(kalkulator, text="-")
-przyciskOdejmowania.bind("<Button-1>", numberMinus)
+przyciskOdejmowania = tkinter.Button(kalkulator, text="-", command=lambda:click("-"))
 przyciskOdejmowania.place(x = 130, y = 150, width = 35, height = 30)
-przyciskSuma = tkinter.Button(kalkulator, text="=")
-przyciskSuma.bind("<Button-1>", numberSum)
+przyciskSuma = tkinter.Button(kalkulator, text="=", command=lambda:click("="))
 przyciskSuma.place(x = 170, y = 150, width = 35, height = 70)
-przyciskPrzecinek = tkinter.Button(kalkulator, text=",")
-przyciskPrzecinek.bind("<Button-1>", numberPrzecinek)
+przyciskPrzecinek = tkinter.Button(kalkulator, text=",", command=lambda:click(","))
 przyciskPrzecinek.place(x = 90, y = 190, width = 35, height = 30)
-przyciskPlus = tkinter.Button(kalkulator, text="+")
-przyciskPlus.bind("<Button-1>", numberPlus)
+przyciskPlus = tkinter.Button(kalkulator, text="+", command=lambda:click("+"))
 przyciskPlus.place(x = 130, y = 190, width = 35, height = 30)
 kalkulator.mainloop()
