@@ -1,17 +1,2 @@
 
-tkinter.Button(okno, text="9").place(x = 90, y = 70, width = 35, height = 30)
-tkinter.Button(okno, text="/").place(x = 130, y = 70, width = 35, height = 30)
-tkinter.Button(okno, text="√").place(x = 170, y = 70, width = 35, height = 30)
-tkinter.Button(okno, text="4").place(x = 10, y = 110, width = 35, height = 30)
-tkinter.Button(okno, text="5").place(x = 50, y = 110, width = 35, height = 30)
-tkinter.Button(okno, text="6").place(x = 90, y = 110, width = 35, height = 30)
-tkinter.Button(okno, text="*").place(x = 130, y = 110, width = 35, height = 30)
-tkinter.Button(okno, text="%").place(x = 170, y = 110, width = 35, height = 30)
-tkinter.Button(okno, text="1").place(x = 10, y = 150, width = 35, height = 30)
-tkinter.Button(okno, text="2").place(x = 50, y = 150, width = 35, height = 30)
-tkinter.Button(okno, text="3").place(x = 90, y = 150, width = 35, height = 30)
-tkinter.Button(okno, text="-").place(x = 130, y = 150, width = 35, height = 30)
-tkinter.Button(okno, text="=").place(x = 170, y = 150, width = 35, height = 70)
-tkinter.Button(okno, text="0").place(x = 10, y = 190, width = 75, height = 30)
-tkinter.Button(okno, text=",").place(x = 90, y = 190, width = 35, height = 30)
-tkinter.Button(okno, text="+").place(x = 130, y = 190, width = 35, height = 30)
+def slonce():
