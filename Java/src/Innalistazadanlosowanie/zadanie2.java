@@ -1,4 +1,4 @@
-package Innalistazadanlosowanie;
+package Kolekcje;
 
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;

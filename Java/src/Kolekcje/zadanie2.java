@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class zadanie7 {
+class zadanie2 {
 
     public static void main(String[] args) {
         String[] tablica = new String[1000];
