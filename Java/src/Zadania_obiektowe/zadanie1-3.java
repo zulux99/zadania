@@ -1,6 +1,6 @@
 package Zadania_obiektowe;
 
-public class zadanie1 {
+class zadanie1_3 {
     public class Komputer {
         String plyta_glowna;
         String procesor;
