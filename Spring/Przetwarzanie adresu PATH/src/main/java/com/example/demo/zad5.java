@@ -2,6 +2,7 @@ package com.example.demo;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
 @RestController
 @RequestMapping("/Request2Header")
 public class zad5 {
@@ -16,7 +17,6 @@ public class zad5 {
         return " <b>Przeglądarka/ klient HTTP:</b><br> " + klient
                 +"<br><br> <b>Język:</b><br> " + acceptLanguage
                 +" <br><br><b>Cookie:</b><br> " + cookie
-                +"<br><br><b>Host:</b><br> " + host
-                ;
+                +"<br><br><b>Host:</b><br> " + host;
     }
 }
