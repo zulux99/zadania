@@ -1,0 +1,2 @@
+
+strzalkaSekunda.shape("arrow")
