@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="pl">
+    <meta charset="UTF-8">
+    <title>Aktualizacja</title>
+</head>
+<body>
+<form  th:action="@{/aktualizuj}" th:object="${ksiazka}">
+    <input type="hidden" name="id" th:value="${id}">
+    <table>
+        <tr>
+            <td>Podaj tytuł </td>
+            <td><input name="tytul" th:field="*{tytul}"> </td>
+        </tr>
+        <tr>
+            <td>Podaj autor </td>
+            <td><input name="autor" th:field="*{autor}"> </td>
+        </tr>
+        <tr>
+            <td>Podaj rok wydania </td>
+            <td><input name="rok_wydania" th:field="*{rok_wydania}"> </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Aktualizuj"> </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

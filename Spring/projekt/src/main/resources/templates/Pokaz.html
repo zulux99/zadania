@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    </head>
+<body>
+Baza danych:
+<table>
+    <th:block th:each="item : ${ksiazka}">
+        <tr>
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.tytul}"></td>
+            <td th:text="${item.autor}"></td>
+            <td th:text="${item.rok_wydania}"></td>
+            <td><a href="#" th:href="@{/kasuj(id=${item.id})}" class="btn btn-danger">
+            <i class="fa fa-trash-o fa-lg"></i>Kasuj</a></td>
+            <td>
+            <a href="#" th:href="@{/przekieruj(id=${item.id})}" class="btn btn-primary">
+                <i class="fa fa-trash-o fa-lg"></i>Aktualizuj</a></td>
+        </tr>
+    </th:block>
+</table>
+<table class="table table-striped">
+    <tr>
+        <td> Wyszukaj książki wg autora</td>
+        <td><form action="http://localhost:8080/wyszukaj"><input name="kryterium"></td>
+        <td><input type="submit"></form></td>
+    </tr>
+</table>
+
+</body>
+</html>
