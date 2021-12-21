@@ -1,4 +1,0 @@
-test działania programu
-# ta linia jest zakomentowana
-to jest 3. linia
-to jest 4. linia
