@@ -1,0 +1,3 @@
+select p.imie, p.nazwisko, p.adres_1, p.adres_2, p.adres_3, p.telefon, nazwa_dzialu as dział, nazwa_stanowiska as stanowisko, p.stawka, p.data_zatrudnienia, p.data_zwolnienia, prz.imie + ' ' + prz.nazwisko as przełożony
+from  dzial d, stanowisko s, dzial_stanowisko ds, pracownik p left join pracownik prz on prz.id_pracownika = p.id_przelozonego
+where p.id_dzial_stanowisko = ds.id_stanowiska and ds.id_dzialu = d.id_dzialu and ds.id_stanowiska = s.id_stanowiska

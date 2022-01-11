@@ -1,0 +1,10 @@
+insert into pracownik values ((select id_dzial_stanowisko from dzial_stanowisko
+where id_dzialu = (select id_dzialu from dzial where nazwa_dzialu = 'zarząd')
+and id_stanowiska = (select id_stanowiska from stanowisko where nazwa_stanowiska = 'wiceprezes')),
+(select id_pracownika from pracownik where imie = 'Wojciech' and nazwisko = 'Uciechowski'),
+'Kamila','Konarska','Będkowice 38','54-523','Wrocław','(071) 443-133-251',
+42.80,
+'2010-10-01',
+null
+)
+select * from pracownik

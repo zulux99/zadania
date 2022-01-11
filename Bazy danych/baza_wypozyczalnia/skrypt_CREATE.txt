@@ -1,0 +1,242 @@
+
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('KLIENCI')
+            and   type = 'U')
+   drop table KLIENCI
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('MIEJSCA')
+            and   type = 'U')
+   drop table MIEJSCA
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('PRACOWNICY')
+            and   name  = 'pracuje_w_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index PRACOWNICY.pracuje_w_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('PRACOWNICY')
+            and   type = 'U')
+   drop table PRACOWNICY
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('SAMOCHODY')
+            and   type = 'U')
+   drop table SAMOCHODY
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('WYPOZYCZENIA')
+            and   name  = 'wypozyczony_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index WYPOZYCZENIA.wypozyczony_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('WYPOZYCZENIA')
+            and   name  = 'Relationship_6_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index WYPOZYCZENIA.Relationship_6_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('WYPOZYCZENIA')
+            and   name  = 'Relationship_5_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index WYPOZYCZENIA.Relationship_5_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('WYPOZYCZENIA')
+            and   name  = 'wypozyczajacy_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index WYPOZYCZENIA.wypozyczajacy_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('WYPOZYCZENIA')
+            and   name  = 'przyjmuje_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index WYPOZYCZENIA.przyjmuje_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('WYPOZYCZENIA')
+            and   name  = 'wypozycza_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index WYPOZYCZENIA.wypozycza_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('WYPOZYCZENIA')
+            and   type = 'U')
+   drop table WYPOZYCZENIA
+go
+
+/*==============================================================*/
+/* Table: KLIENCI                                               */
+/*==============================================================*/
+create table KLIENCI (
+   NR_KLIENTA           int                  not null,
+   IMIE                 varchar(20)          not null,
+   NAZWISKO             varchar(20)          not null,
+   NR_KARTY_KREDYT      char(20)             null,
+   FIRMA                varchar(40)          null,
+   ULICA                varchar(24)          not null,
+   NUMER                char(8)              not null,
+   MIASTO               varchar(24)          not null,
+   KOD                  char(6)              not null,
+   NIP                  char(12)             null,
+   NR_TELEFONU          char(16)             null,
+   constraint PK_KLIENCI primary key nonclustered (NR_KLIENTA)
+)
+go
+
+/*==============================================================*/
+/* Table: MIEJSCA                                               */
+/*==============================================================*/
+create table MIEJSCA (
+   NR_MIEJSCA           int                  not null,
+   ULICA                varchar(24)          not null,
+   NUMER                char(8)              not null,
+   MIASTO               varchar(24)          not null,
+   KOD                  char(6)              not null,
+   TELEFON              char(16)             null,
+   UWAGI                varchar(40)          null,
+   constraint PK_MIEJSCA primary key nonclustered (NR_MIEJSCA)
+)
+go
+
+/*==============================================================*/
+/* Table: PRACOWNICY                                            */
+/*==============================================================*/
+create table PRACOWNICY (
+   NR_PRACOWNIKA        int                  not null,
+   IMIE                 varchar(20)          not null,
+   NAZWISKO             varchar(20)          not null,
+   DATA_ZATR            date                 not null,
+   DZIAL                varchar(20)          not null,
+   STANOWISKO           varchar(20)          not null,
+   PENSJA               decimal(8,2)         null,
+   DODATEK              decimal(8,2)         null,
+   NR_MIEJSCA           int                  not null,
+   NR_TELEFONU          char(16)             null,
+   constraint PK_PRACOWNICY primary key nonclustered (NR_PRACOWNIKA)
+)
+go
+
+/*==============================================================*/
+/* Index: pracuje_w_FK                                          */
+/*==============================================================*/
+create index pracuje_w_FK on PRACOWNICY (
+NR_MIEJSCA ASC
+)
+go
+
+/*==============================================================*/
+/* Table: SAMOCHODY                                             */
+/*==============================================================*/
+create table SAMOCHODY (
+   NR_SAMOCHODU         int                  not null,
+   MARKA                varchar(20)          not null,
+   TYP                  varchar(16)          not null,
+   ROK_PROD             date                 not null,
+   KOLOR                varchar(16)          not null,
+   POJ_SILNIKA          smallint             not null,
+   PRZEBIEG             int                  not null,
+   constraint PK_SAMOCHODY primary key nonclustered (NR_SAMOCHODU)
+)
+go
+
+/*==============================================================*/
+/* Table: WYPOZYCZENIA                                          */
+/*==============================================================*/
+create table WYPOZYCZENIA (
+   NR_WYPOZYCZENIA      int                  not null,
+   NR_KLIENTA           int                  not null,
+   NR_SAMOCHODU         int                  not null,
+   NR_PRACOWNIKA_WYP    int                  not null,
+   NR_PRACOWNIKA_ODD    int                  null,
+   NR_MIEJSCA_WYP       int                  not null,
+   NR_MIEJSCA_ODD       int                  null,
+   DATA_WYP             date                 not null,
+   DATA_ODD             date                 null,
+   KAUCJA               decimal(8,2)         null,
+   CENA_JEDN            decimal(8,2)         not null,
+   constraint PK_WYPOZYCZENIA primary key nonclustered (NR_WYPOZYCZENIA)
+)
+go
+
+/*==============================================================*/
+/* Index: wypozycza_FK                                          */
+/*==============================================================*/
+create index wypozycza_FK on WYPOZYCZENIA (
+NR_PRACOWNIKA_WYP ASC
+)
+go
+
+/*==============================================================*/
+/* Index: przyjmuje_FK                                          */
+/*==============================================================*/
+create index przyjmuje_FK on WYPOZYCZENIA (
+NR_PRACOWNIKA_ODD ASC
+)
+go
+
+/*==============================================================*/
+/* Index: wypozyczajacy_FK                                      */
+/*==============================================================*/
+create index wypozyczajacy_FK on WYPOZYCZENIA (
+NR_KLIENTA ASC
+)
+go
+
+/*==============================================================*/
+/* Index: Relationship_5_FK                                     */
+/*==============================================================*/
+create index Relationship_5_FK on WYPOZYCZENIA (
+NR_MIEJSCA_WYP ASC
+)
+go
+
+/*==============================================================*/
+/* Index: Relationship_6_FK                                     */
+/*==============================================================*/
+create index Relationship_6_FK on WYPOZYCZENIA (
+NR_MIEJSCA_ODD ASC
+)
+go
+
+/*==============================================================*/
+/* Index: wypozyczony_FK                                        */
+/*==============================================================*/
+create index wypozyczony_FK on WYPOZYCZENIA (
+NR_SAMOCHODU ASC
+)
+go
+
