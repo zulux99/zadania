@@ -7,3 +7,9 @@ body
 {
     background-color: darkgray;
 }
+.input-no-styles
+{
+    border: none;
+    background: transparent;
+    outline: none;
+}

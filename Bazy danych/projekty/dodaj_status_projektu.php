@@ -3,21 +3,21 @@ session_start();
 require("header.php");
 if(isset($_POST['zapisz']))
 {
-    if(!empty($_POST['rodzaj_projektu']))
+    if(!empty($_POST['status_projektu']))
     {
-        $query = $connect -> query("SELECT * FROM rodzaj ORDER BY nazwa_rodzaj;");
+        $query = $connect -> query("SELECT * FROM `status` ORDER BY `nazwa_status`;");
         while ($row = $query -> fetch_assoc())
         {
-           if($row['nazwa_rodzaj'] == $_POST['rodzaj_projektu'])
+           if($row['nazwa_status'] == $_POST['status_projektu'])
            {
-               $_SESSION['komunikat1'] = "Taki rodzaj projektu już istnieje";
+               $_SESSION['komunikat1'] = "Taki status projektu już istnieje";
            }
         }
-        $connect->query("INSERT INTO `rodzaj` (`nazwa_rodzaj`) VALUES ('".$_POST['rodzaj_projektu']."')");
+        $connect->query("INSERT INTO `status` (`nazwa_status`) VALUES ('".$_POST['status_projektu']."')");
     }
     else
     {
-        $_SESSION['komunikat1'] = "Nie wprowadzono nazwy rodzaju projektu!";
+        $_SESSION['komunikat1'] = "Nie wprowadzono nazwy statusu projektu!";
     }
 }
 ?>
@@ -27,11 +27,11 @@ if(isset($_POST['zapisz']))
 <meta charset="UTF-8">
 <title>Projekty</title>
 <body>
-    <form method="POST" action="dodaj_rodzaj_projektu.php">
+    <form method="POST" action="dodaj_status_projektu.php">
         <div class="d-flex justify-content-center">
-            <h4>Rodzaj projektu:</h4>
+            <h4>Status projektu:</h4>
             <div class="form-group col-sm-2">
-                <input type="text" class="form-control col-sm" name="rodzaj_projektu">
+                <input type="text" class="form-control col-sm" name="status_projektu">
             </div>
             <div class="form-group">
                 <input type="submit" value="Zapisz" class="btn btn-success" name="zapisz">

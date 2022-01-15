@@ -22,11 +22,12 @@ require("connect.php");
                     Menu
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Wykaz projektów</a>
+                    <a class="dropdown-item" href="wykaz_projektow.php">Wykaz projektów</a>
                     <a class="dropdown-item" href="dodaj_rodzaj_projektu.php">Dodaj rodzaj projektu</a>
-                    <a class="dropdown-item" href="#">Dodaj status projektu</a>
-                    <a class="dropdown-item" href="#">Edytuj rodzaj projektu</a>
-                    <a class="dropdown-item" href="#">Dodaj projekt</a>
+                    <a class="dropdown-item" href="dodaj_status_projektu.php">Dodaj status projektu</a>
+                    <a class="dropdown-item" href="edytuj_rodzaj_projektu.php">Edytuj rodzaj projektu</a>
+                    <a class="dropdown-item" href="edytuj_status_projektu.php">Edytuj status projektu</a>
+                    <a class="dropdown-item" href="dodaj_projekt.php">Dodaj projekt</a>
                     <a class="dropdown-item" href="#">Projekty wg rodzaju</a>
                     <a class="dropdown-item" href="#">Projekty wg statusu</a>
                     <a class="dropdown-item" href="#">Edycja projektu</a>
