@@ -11,11 +11,14 @@ public class Ksiazka {
     private String tytul;
     private String autor;
     private Integer rok_wydania;
+    @ManyToOne
+    private Dzial dzial;
     public Ksiazka(String tytul, String autor, Integer rok_wydania) {
         this.tytul = tytul;
         this.autor = autor;
         this.rok_wydania = rok_wydania;
     }
+
     public Ksiazka(Integer id, String tytul, String autor, Integer rok_wydania) {
         this.id = id;
         this.tytul = tytul;
