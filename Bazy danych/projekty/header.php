@@ -28,9 +28,9 @@ require("connect.php");
                     <a class="dropdown-item" href="edytuj_rodzaj_projektu.php">Edytuj rodzaj projektu</a>
                     <a class="dropdown-item" href="edytuj_status_projektu.php">Edytuj status projektu</a>
                     <a class="dropdown-item" href="dodaj_projekt.php">Dodaj projekt</a>
-                    <a class="dropdown-item" href="#">Projekty wg rodzaju</a>
-                    <a class="dropdown-item" href="#">Projekty wg statusu</a>
-                    <a class="dropdown-item" href="#">Edycja projektu</a>
+                    <a class="dropdown-item" href="projekty_wg_rodzaju.php">Projekty wg rodzaju</a>
+                    <a class="dropdown-item" href="projekty_wg_statusu.php">Projekty wg statusu</a>
+                    <a class="dropdown-item" href="edycja_projektu.php">Edycja projektu</a>
                     <a class="dropdown-item" href="#">Edycja projekt szczegóły</a>
                 </div>
             </div>

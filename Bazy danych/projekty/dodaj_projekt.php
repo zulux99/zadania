@@ -50,7 +50,9 @@ if (isset($_POST['dodaj']))
             </select>
             <input type="text" placeholder="Nr projektu" name="nr_projektu" class="form-control">
             <textarea rows="3" placeholder="Temat projektu" name="temat_projektu" class="form-control"></textarea>
-            <input type="date" name="data_rozpoczecia" class="form-control">
+            Data rozpoczęcia:
+            <input type="date" name="data_rozpoczecia" placeholder="Date" class="form-control">
+            Data zakończenia:
             <input type="date" name="data_zakonczenia" class="form-control">
             <input type="number" name="kwota_projektu" step="0.01" min="0.01" placeholder="Kwota projektu" class="form-control">
             <textarea rows="3" placeholder="Uwagi" name="uwagi" class="form-control"></textarea>
