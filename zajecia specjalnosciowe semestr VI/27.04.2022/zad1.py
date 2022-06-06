@@ -6,6 +6,6 @@ def insertion_sort(lista):
         lista.insert(j + 1, lista.pop(i))
 
 
-lista = [12,34,153,21,456,865,96,45,4321,45,865,87]
+lista = [12, 34, 153, 21, 456, 865, 96, 45, 4321, 45, 865, 87]
 insertion_sort(lista)
 print(lista)
